@@ -59,3 +59,70 @@ void setup()
     score = 0;
 }
 /*绘制界面*/
+void draw()
+{
+        if(stop == true)
+        {
+                return;
+        }
+    system("cls");/*清除屏幕*/
+    printf("分数:%d",score);
+    printf("\n");
+    
+        /*第一行*/
+    int i;
+    for(i= 0 ;i<width+1;i++)
+        {
+        printf("-");
+    }
+    printf("\n");
+    
+    /*画中间的画面*/
+    int p;
+    for(p= 0 ;p<height;p++)/*高度*/
+        {
+        int q;
+        for(q= 0 ;q<width;q++)/*宽度*/
+                {
+                        /*第一行最后已给字符*/
+            if(q==0 || q==width-1)
+                        {
+                printf("|");
+            }
+            
+                        if(p == fruitY && q == fruitX)/*食物的随机坐标*/
+                        {
+                printf("O");
+            }
+                        else
+                        {
+                    int k=0;
+                    bool print = false;
+                    /*贪吃蛇的长度 默认长度是 3*/
+                                        for(k=0;k<ntail;k++)
+                                        {
+                        if(tailX[k]==q && tailY[k]==p)
+                                                {
+                            printf("*");
+                            print = true;
+                        }
+                    }
+                    /*如果这个位置打印了 * 就不要打印空格了*/
+                    if(!print)
+                                        {
+                                                printf(" ");
+                                        }
+            }
+        }
+        printf("\n");
+    }
+ 
+        /*最后一行*/
+    int j;
+    for(j= 0 ;j<width+1;j++)
+        {
+        printf("-");
+    }
+ 
+}
+/*按键输入控制*/
