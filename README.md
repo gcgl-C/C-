@@ -31,3 +31,31 @@ typedef enum
  
 Direction Dir;
 /*开始菜单*/
+{
+    int a;
+    printf("------------------------------------------------------------------\n");
+    printf("|                              贪吃蛇游戏                        |\n");
+    printf("|                              1) 新游戏                         |\n");
+    printf("|                              2) 开始边界                       |\n");
+    printf("|                              3) 退出游戏                       |\n");
+    printf("------------------------------------------------------------------\n");
+    printf("---->请输入你的选择:");
+    scanf("%d", &a);
+}
+/*初始化状态*/
+void setup()
+{
+    gameOver = false;
+    /*根据当前时间设置“随机数种子”*/
+    srand(time(NULL));
+    Dir = STOP;
+    
+    /*贪吃蛇的位置,固定在中间*/
+    x= width/2;
+    y= height/2;
+    /*食物的位置，位置是随机的*/
+    fruitX = rand()%width;
+    fruitY = rand()%height;
+    score = 0;
+}
+/*绘制界面*/
